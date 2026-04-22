@@ -1,0 +1,23 @@
+Su deniz(website name) (React.js Headless Shopify)
+Homepage Flow:
+Header → Logo, Navigation, Cart, Wishlist
+Hero Section
+Products Section → Featured products grid
+About Us → Brand story
+Collections → Rings, Necklaces, Earrings, Bracelets
+Testimonials → Customer reviews
+Newsletter → Email subscription
+Footer → Links, contact info
+Pages:
+Products Page → All products with filters
+Product Page → Images, price, add to cart
+Cart Page → Items summary
+Wishlist Page → Saved items
+Contact Page → Form + info
+Privacy Policy + Terms pages
+Tech Stack:
+Frontend: React.js + Tailwind
+Color PaletteThe design uses a sophisticated, muted palette to evoke a sense of luxury and timelessness.Primary Background: A warm, desaturated Beige or Cream (approximate Hex: #F5F3ED).Secondary Background (Hero Section): A soft Taupe or Muted Stone (approximate Hex: #D7D3C8).Heading Color: A light Ivory or Off-White used in the "CELESTIQUE" logo and "ABOUT US" titles to create a subtle, high-end contrast against the taupe.Body Text Color: A deep Warm Grey or Charcoal (approximate Hex: #4A4A4A) for readability.Accent Color: Black is used for buttons and specific navigation links to provide a modern, grounded focal point.TypographyThe brand uses a "Serif + Sans Serif" pairing, which is a classic technique for luxury lifestyle brands.Heading Font (Display Serif):Style: A high-contrast, modern Serif font with "stenciled" or decorative elements (seen in the star-like cutouts in the 'E' and 'O').Characteristics: Thick verticals and very thin horizontals.Similar Fonts: Canela, Ogg, or custom variations of Didot and Bodoni.Body Text & Navigation (Minimalist Sans Serif):Style: A clean, geometric Sans Serif.Characteristics: All-caps for navigation ("RINGS", "EARRINGS") and wide letter spacing (kerning) for the product descriptions and "About Us" copy.Similar Fonts: Montserrat, Futura, or Gotham.Summary TableElementColorFont StyleMain HeadingsOff-White / IvoryDecorative High-Contrast SerifBody TextCharcoal / Dark GreyClean Geometric Sans SerifBackgroundsWarm Beige & TaupeN/ACall to ActionBlackBold Sans Serif.
+Product images are in the public folder(images/rings,bracelete,necklace,earings).
+this is the raw input.now we have to make it more optimize.i did not add 3d yet.i will provide you later.
+
