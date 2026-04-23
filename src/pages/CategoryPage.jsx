@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Heart, ShoppingBag } from 'lucide-react';
+import { USD_TO_PKR } from '../data/products';
 import { useCartWishlist } from '../context/CartWishlistContext';
-
-const USD_TO_PKR = 280;
 
 const categoryProducts = {
   rings: {

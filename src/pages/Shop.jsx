@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { products } from '../data/products';
+import { products, USD_TO_PKR } from '../data/products';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ const Shop = () => {
                 <Link to={`/product/${product.id}`}>
                   <h3 className="font-serif text-lg tracking-wide group-hover:text-muted transition-colors">{product.name}</h3>
                 </Link>
-                <p className="font-sans text-sm mt-2 tracking-widest">${product.price.toLocaleString()}</p>
+                <p className="font-sans text-sm mt-2 tracking-widest">Rs. {(product.price * USD_TO_PKR).toLocaleString()}</p>
               </div>
             </motion.div>
           ))}

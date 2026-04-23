@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { products, USD_TO_PKR } from '../data/products';
 import { Heart, ShoppingBag, ArrowLeft, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -51,7 +51,7 @@ const ProductDetail = () => {
             </span>
             <h1 className="text-4xl md:text-5xl font-serif mb-6">{product.name}</h1>
             <p className="text-2xl font-sans tracking-widest mb-8 text-accent">
-              ${product.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+              Rs. {(product.price * USD_TO_PKR).toLocaleString()}
             </p>
             
             <div className="h-[1px] bg-accent/10 w-full mb-8" />
