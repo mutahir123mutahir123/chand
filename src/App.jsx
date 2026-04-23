@@ -9,7 +9,10 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import OurStory from './pages/OurStory';
-import CategoryPage from './pages/CategoryPage';
+import Rings from './pages/Rings';
+import Necklaces from './pages/Necklaces';
+import Earrings from './pages/Earrings';
+import Bracelets from './pages/Bracelets';
 import { CartWishlistProvider } from './context/CartWishlistContext';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -29,10 +32,10 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/our-story" element={<OurStory />} />
-              <Route path="/rings" element={<CategoryPage category="rings" />} />
-              <Route path="/bracelets" element={<CategoryPage category="bracelets" />} />
-              <Route path="/necklaces" element={<CategoryPage category="necklaces" />} />
-              <Route path="/earrings" element={<CategoryPage category="earrings" />} />
+              <Route path="/rings" element={<Rings />} />
+              <Route path="/bracelets" element={<Bracelets />} />
+              <Route path="/necklaces" element={<Necklaces />} />
+              <Route path="/earrings" element={<Earrings />} />
             </Routes>
           </main>
           <Footer />
