@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingBag, User, Heart, Menu, X } from 'lucide-react';
+import { ShoppingBag, User, Heart, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useCartWishlist } from '../context/CartWishlistContext';
@@ -63,8 +63,8 @@ const Header = () => {
         {/* Logo */}
         <div className="absolute left-1/2 -translate-x-1/2 text-center">
           <Link to="/" className="block">
-            <h1 className="text-2xl md:text-3xl tracking-[0.3em] font-serif uppercase">
-              SU DENIZ
+            <h1 className="text-1xl md:text-2xl tracking-[0.3em] font-serif uppercase">
+              Jewelery Cabin
             </h1>
             {/* <p className="text-[8px] tracking-[0.5em] font-sans mt-1 text-muted uppercase">
               Fine Jewelry
@@ -87,9 +87,6 @@ const Header = () => {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <button className="text-accent hover:opacity-60 transition-opacity">
-              <Search size={20} strokeWidth={1.5} />
-            </button>
             <Link to="/contact" className="text-accent hover:opacity-60 transition-opacity hidden md:block">
               <User size={20} strokeWidth={1.5} />
             </Link>
