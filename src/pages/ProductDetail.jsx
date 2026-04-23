@@ -3,10 +3,21 @@ import { useParams, Link } from 'react-router-dom';
 import { products, USD_TO_PKR } from '../data/products';
 import { Heart, ShoppingBag, ArrowLeft, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCartWishlist } from '../context/CartWishlistContext';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find(p => p.id === parseInt(id));
+  const { addToCart, addToWishlist, isInWishlist } = useCartWishlist();
+  const inWishlist = product ? isInWishlist(product.id) : false;
+
+  const handleAddToCart = () => {
+    if (product) addToCart(product);
+  };
+
+  const handleAddToWishlist = () => {
+    if (product) addToWishlist(product);
+  };
 
   if (!product) {
     return (
@@ -61,10 +72,16 @@ const ProductDetail = () => {
             </p>
 
             <div className="flex flex-col space-y-4 mb-12">
-              <button className="btn-primary w-full md:w-auto flex items-center justify-center">
+              <button 
+                className="btn-primary w-full md:w-auto flex items-center justify-center"
+                onClick={handleAddToCart}
+              >
                 <ShoppingBag size={18} className="mr-3" /> Add to Shopping Bag
               </button>
-              <button className="btn-outline w-full md:w-auto flex items-center justify-center">
+              <button 
+                className="btn-outline w-full md:w-auto flex items-center justify-center"
+                onClick={handleAddToWishlist}
+              >
                 <Heart size={18} className="mr-3" /> Add to Wishlist
               </button>
             </div>
