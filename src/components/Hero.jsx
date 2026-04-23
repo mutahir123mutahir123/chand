@@ -64,23 +64,11 @@ const Hero = () => {
           </div>
           
           {/* Buttons - under image on mobile, integrated on desktop */}
-          <div className="mt-8 lg:hidden flex flex-col space-y-4">
+          <div className="mt-8 lg:hidden flex flex-col space-y-4 items-center">
             <Link to="/shop"><button className="btn-primary">Shop Collection</button></Link>
             <Link to="/our-story"><button className="btn-outline">Our Story</button></Link>
           </div>
         </motion.div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
-        <span className="text-[8px] tracking-[0.3em] uppercase text-muted mb-4 vertical-text">Scroll</span>
-        <div className="w-[1px] h-12 bg-accent/20 relative">
-          <motion.div 
-            animate={{ top: [0, 48, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-4 bg-accent"
-          />
-        </div>
       </div>
     </section>
   );
