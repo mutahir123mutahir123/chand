@@ -93,9 +93,10 @@ const ProductGrid = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          {products.slice(0, 4).map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
+          ))}
           ))}
         </div>
       </div>
