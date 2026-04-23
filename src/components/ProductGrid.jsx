@@ -97,7 +97,6 @@ const ProductGrid = () => {
           {products.slice(0, 4).map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
-          ))}
         </div>
       </div>
     </section>
