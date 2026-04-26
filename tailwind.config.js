@@ -8,15 +8,18 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#F5F3ED',
-          dark: '#DCD6C8',
+          DEFAULT: '#FFFFFF',       // White
+          dark: '#F7C5C5',          // Tea Rose
         },
-        accent: '#1A1A1A',
-        muted: '#555555',
+        accent:    '#BE2E1D',       // Rich Red
+        muted:     '#9B6B6B',       // Warm Rose-Brown – secondary text
+        ivory:     '#FEF0F0',       // Blush White
+        teal:      '#8B1A1A',       // Cherry Red – hero / footer / menu
+        'tea-rose': '#F7C5C5',      // Tea Rose alias
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['"Gaston Honey"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans:  ['Raleway', 'system-ui', 'sans-serif'],
       },
     },
   },

@@ -1,27 +1,31 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gaston-honey');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300;1,14..32,400&family=Raleway:wght@300;400;500;600&display=swap');
 
 @config "../tailwind.config.js";
 
 @theme {
-  --font-serif: "Bodoni Moda", serif;
-  --font-sans: "Inter", sans-serif;
-  
-  --color-primary: #F5F3ED;
-  --color-primary-dark: #C9C4B9;
-  --color-accent: #1A1A1A;
-  --color-muted: #555555;
-  --color-ivory: #FCFAF2;
+  --font-serif: "Gaston Honey", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Raleway", system-ui, sans-serif;
+
+  /* Color palette: Cherry Red · White · Tea Rose · Warm Rose */
+  --color-primary:      #FFFFFF;        /* White – main background            */
+  --color-primary-dark: #F7C5C5;        /* Tea Rose – alternate bg            */
+  --color-accent:       #BE2E1D;        /* Rich Red – primary accent          */
+  --color-muted:        #9B6B6B;        /* Warm Rose-Brown – secondary text   */
+  --color-ivory:        #FEF0F0;        /* Blush White – soft surfaces        */
+  --color-teal:         #8B1A1A;        /* Cherry Red – hero / footer / menu  */
+  --color-tea-rose:     #F7C5C5;        /* Tea Rose alias                     */
 }
 
 @layer base {
   :root {
-    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Raleway", system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color-scheme: light dark;
+    color-scheme: light;
     color: #1A1A1A;
-    background-color: #F5F3ED;
+    background-color: #FFFFFF;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -32,25 +36,38 @@
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background-color: #F5F3ED;
+    background-color: #FFFFFF;
     color: #1A1A1A;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Bodoni Moda', serif;
+    font-family: "Gaston Honey", "Cormorant Garamond", Georgia, serif;
     font-weight: 400;
     color: #1A1A1A;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 
-  /* Luxury Heading Style (as seen in the reference) */
   .heading-luxury {
-    font-family: 'Bodoni Moda', serif;
-    color: #FCFAF2 !important; /* Force light ivory */
-    font-weight: 500;
+    font-family: "Gaston Honey", "Cormorant Garamond", Georgia, serif;
+    color: #BE2E1D !important;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1;
+  }
+
+  /* ── Paragraph readability ── */
+  p {
+    font-size: 1.0625rem;   /* 17px – comfortable reading size */
+    line-height: 1.78;
+    color: #3D2B2B;         /* Very dark warm-rose – max readability on white */
+  }
+
+  /* Smaller utility override when explicitly needed (e.g. labels, badges) */
+  .text-xs p, p.text-xs,
+  .text-sm p, p.text-sm {
+    font-size: inherit;
+    line-height: inherit;
   }
 
   html {
@@ -60,20 +77,20 @@
 
 @layer components {
   .container {
-    max-width: 80rem; /* 7xl */
+    max-width: 80rem;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .container {
       padding-left: 2rem;
@@ -81,21 +98,22 @@
     }
   }
 
+  /* ── Buttons ── */
   .btn-primary {
     background-color: var(--color-accent);
-    color: white;
+    color: #ffffff;
     padding: 0.75rem 2rem;
     border-radius: 0;
-    transition: all 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
     font-family: var(--font-sans);
     letter-spacing: 0.1em;
     font-size: 0.75rem;
     text-transform: uppercase;
     cursor: pointer;
   }
-  
   .btn-primary:hover {
-    opacity: 0.9;
+    background-color: #8B1A0E;
+    transform: translateY(-1px);
   }
 
   .btn-outline {
@@ -110,9 +128,28 @@
     text-transform: uppercase;
     cursor: pointer;
   }
-  
   .btn-outline:hover {
     background-color: var(--color-accent);
-    color: white;
+    color: #ffffff;
   }
+
+  /* ── Section Divider ── */
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin: 0 auto 2rem;
+  }
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #ffffff; }
+::-webkit-scrollbar-thumb  { background: #BE2E1D; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #8B1A0E; }
+
+/* ── Selection Colour ── */
+::selection {
+  background: #F7C5C5;
+  color: #BE2E1D;
 }

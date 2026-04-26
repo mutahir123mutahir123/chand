@@ -12,88 +12,108 @@ const Header = () => {
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
   const navLinks = [
-    { name: 'RINGS', href: '/rings' },
+    { name: 'RINGS',     href: '/rings'     },
     { name: 'NECKLACES', href: '/necklaces' },
-    { name: 'EARRINGS', href: '/earrings' },
+    { name: 'EARRINGS',  href: '/earrings'  },
     { name: 'BRACELETS', href: '/bracelets' },
-    { name: 'CONTACT', href: '/contact' },
+    { name: 'CONTACT',   href: '/contact'   },
   ];
 
+  /* When not scrolled the header sits over the dark-teal hero → use white text.
+     When scrolled the header gets a white bg → use red/teal text.             */
+  const textClass   = isScrolled ? 'text-accent'      : 'text-white';
+  const logoClass   = isScrolled ? 'text-accent'      : 'text-white';
+  const iconClass   = isScrolled ? 'text-accent'      : 'text-white';
+  const borderClass = isScrolled ? 'border-accent/20' : 'border-white/30';
+
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-primary py-4 shadow-sm' : 'lg:bg-transparent bg-primary py-4 lg:py-8'
+        isScrolled ? 'shadow-sm py-4' : 'py-4 lg:py-8'
       }`}
+      style={{ backgroundColor: isScrolled ? '#FFFFFF' : '#1C1C2E' }}
     >
       <div className="container flex items-center justify-between">
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="lg:hidden text-accent"
+
+        {/* ── Mobile Menu Toggle ───────────────────────────────────── */}
+        <button
+          className={`lg:hidden transition-colors ${iconClass}`}
           onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Open menu"
         >
           <Menu size={24} />
         </button>
 
-        {/* Left Nav (Desktop) */}
+        {/* ── Left Nav (Desktop) ───────────────────────────────────── */}
         <nav className="hidden lg:flex items-center space-x-8">
           {navLinks.slice(0, 2).map((link) => (
-            <Link 
-              key={link.name} 
+            <Link
+              key={link.name}
               to={link.href}
-              className="text-[10px] tracking-[0.2em] font-sans text-accent hover:opacity-60 transition-opacity"
+              className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass}`}
             >
               {link.name}
             </Link>
           ))}
         </nav>
 
-        {/* Logo */}
+        {/* ── Logo (centered) ─────────────────────────────────────── */}
         <div className="absolute left-1/2 -translate-x-1/2 text-center">
           <Link to="/" className="block">
-            <h1 className="text-1xl md:text-2xl tracking-[0.3em] font-serif uppercase">
+            <motion.h1
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              className={`text-xl md:text-2xl tracking-[0.35em] font-serif uppercase transition-colors duration-500 ${logoClass}`}
+            >
               Jewelery Cabin
-            </h1>
-            {/* <p className="text-[8px] tracking-[0.5em] font-sans mt-1 text-muted uppercase">
-              Fine Jewelry
-            </p> */}
+            </motion.h1>
           </Link>
         </div>
 
-        {/* Right Nav (Desktop) */}
+        {/* ── Right Nav (Desktop) + Icons ─────────────────────────── */}
         <div className="flex items-center space-x-6">
           <nav className="hidden lg:flex items-center space-x-8 mr-8">
             {navLinks.slice(2).map((link) => (
-              <Link 
-                key={link.name} 
+              <Link
+                key={link.name}
                 to={link.href}
-                className="text-[10px] tracking-[0.2em] font-sans text-accent hover:opacity-60 transition-opacity"
+                className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass}`}
               >
                 {link.name}
               </Link>
             ))}
           </nav>
-          
+
           <div className="flex items-center space-x-4">
-            <Link to="/contact" className="text-accent hover:opacity-60 transition-opacity hidden md:block">
+            <Link
+              to="/contact"
+              className={`transition-opacity hover:opacity-60 hidden md:block ${iconClass}`}
+            >
               <User size={20} strokeWidth={1.5} />
             </Link>
-            <Link to="/wishlist" className="text-accent hover:opacity-60 transition-opacity relative">
+
+            <Link
+              to="/wishlist"
+              className={`transition-opacity hover:opacity-60 relative ${iconClass}`}
+            >
               <Heart size={20} strokeWidth={1.5} />
             </Link>
-            <Link to="/cart" className="text-accent hover:opacity-60 transition-opacity relative">
+
+            <Link
+              to="/cart"
+              className={`transition-opacity hover:opacity-60 relative ${iconClass}`}
+            >
               <ShoppingBag size={20} strokeWidth={1.5} />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-accent text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full">
@@ -105,43 +125,54 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Menu ──────────────────────────────────────────── */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
-            transition={{ type: 'tween', duration: 0.5 }}
-            className="fixed inset-0 bg-primary z-[60] flex flex-col p-8"
+            transition={{ type: 'tween', duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+            className="fixed inset-0 z-[60] flex flex-col p-8"
+            style={{ backgroundColor: '#1C1C2E' }}
           >
+            {/* Close */}
             <div className="flex justify-start">
-              <button onClick={() => setIsMobileMenuOpen(false)}>
-                <X size={32} className="text-accent -ml-2" />
+              <button onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
+                <X size={32} className="text-white -ml-2" />
               </button>
             </div>
+
+            {/* Links */}
             <nav className="flex flex-col space-y-8 mt-12">
-              <Link 
-                to="/" 
-                className="text-2xl tracking-[0.1em] font-serif text-accent"
-              >
-                HOME
-              </Link>
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  to={link.href}
-                  className="text-2xl tracking-[0.1em] font-serif text-accent"
+              {[{ name: 'HOME', href: '/' }, ...navLinks].map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07, duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    to={link.href}
+                    className="text-2xl tracking-[0.12em] font-serif text-white hover:text-tea-rose transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <div className="pt-8 border-t border-accent/10 flex space-x-6">
-                <Link to="/contact"><User size={24} /></Link>
-                <Link to="/wishlist"><Heart size={24} /></Link>
-                <Link to="/cart"><ShoppingBag size={24} /></Link>
-              </div>
             </nav>
+
+            {/* Bottom icons */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55, duration: 0.4 }}
+              className="pt-8 mt-auto border-t border-white/20 flex space-x-6"
+            >
+              <Link to="/contact"><User  size={24} className="text-white" /></Link>
+              <Link to="/wishlist"><Heart size={24} className="text-white" /></Link>
+              <Link to="/cart"><ShoppingBag size={24} className="text-white" /></Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
