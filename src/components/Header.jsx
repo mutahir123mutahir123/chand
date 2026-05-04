@@ -24,10 +24,9 @@ const Header = () => {
 
   const navLinks = [
     { name: 'SHOP',      href: '/shop',     isDropdown: true },
-    { name: 'RINGS',     href: '/rings'     },
-    { name: 'NECKLACES', href: '/necklaces' },
-    { name: 'EARRINGS',  href: '/earrings'  },
-    { name: 'BRACELETS', href: '/bracelets' },
+    { name: 'NEW ARRIVALS', href: '/new-arrivals' },
+    { name: 'BEST SELLINGS', href: '/best-sellings' },
+    { name: 'CLIENT REVIEWS', href: '/reviews' },
     { name: 'CONTACT',   href: '/contact'   },
   ];
 
@@ -157,7 +156,7 @@ const Header = () => {
         {/* ── Right Nav (Desktop) + Icons ─────────────────────────── */}
         <div className="flex items-center space-x-6">
           <nav className="hidden lg:flex items-center space-x-8 mr-8">
-            {navLinks.slice(2).map((link) => (
+            {navLinks.slice(1, 4).map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
