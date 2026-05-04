@@ -7,6 +7,7 @@ import { useCartWishlist } from '../context/CartWishlistContext';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isShopOpen, setIsShopOpen] = useState(false);
   const location = useLocation();
   const { cartItems } = useCartWishlist();
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -22,11 +23,24 @@ const Header = () => {
   }, [location]);
 
   const navLinks = [
+    { name: 'SHOP',      href: '/shop',     isDropdown: true },
     { name: 'RINGS',     href: '/rings'     },
     { name: 'NECKLACES', href: '/necklaces' },
     { name: 'EARRINGS',  href: '/earrings'  },
     { name: 'BRACELETS', href: '/bracelets' },
     { name: 'CONTACT',   href: '/contact'   },
+  ];
+
+  const collections = [
+    { name: 'Jhumka', image: '/images/chand-products/5.webp' },
+    { name: 'Studs', image: '/images/chand-products/6.webp' },
+    { name: 'Kara', image: '/images/chand-products/7.webp' },
+    { name: 'Kangan', image: '/images/chand-products/8.webp' },
+    { name: 'Jelly Bangles', image: '/images/chand-products/9.webp' },
+    { name: 'Bracelets', image: '/images/chand-products/10.webp' },
+    { name: 'Pazeb', image: '/images/chand-products/11.webp' },
+    { name: 'Rings', image: '/images/chand-products/12.webp' },
+    { name: 'Bridal Sets', image: '/images/chand-products/14.webp' },
   ];
 
   /* When not scrolled the header sits over the dark-teal hero → use white text.
@@ -56,7 +70,67 @@ const Header = () => {
 
         {/* ── Left Nav (Desktop) ───────────────────────────────────── */}
         <nav className="hidden lg:flex items-center space-x-8">
-          {navLinks.slice(0, 2).map((link) => (
+          {navLinks.slice(0, 1).map((link) => (
+            <div key={link.name} className="relative">
+              <Link
+                to={link.href}
+                className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass} cursor-pointer`}
+                onMouseEnter={() => link.isDropdown && setIsShopOpen(true)}
+              >
+                {link.name}
+              </Link>
+              <AnimatePresence>
+                {isShopOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 top-full mt-2 w-[90vw] max-w-5xl mx-auto"
+                    style={{ left: '50%', transform: 'translateX(-50%)' }}
+                    onMouseLeave={() => setIsShopOpen(false)}
+                  >
+                    <div className="flex bg-[#1C1C2E] rounded-lg overflow-hidden shadow-2xl">
+                      <div className="w-1/3 p-8 flex flex-col justify-center space-y-6">
+                        <h3 className="text-white text-xl tracking-[0.2em] font-serif">COLLECTIONS</h3>
+                        <div className="space-y-3">
+                          {collections.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                              className="block text-white/70 text-sm tracking-[0.15em] hover:text-white hover:translate-x-2 transition-all duration-300"
+                            >
+                              {item.name.toUpperCase()}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="w-2/3 grid grid-cols-3 gap-2 p-4">
+                        {collections.map((item, index) => (
+                          <Link
+                            key={item.name}
+                            to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                            className="relative group overflow-hidden rounded-lg aspect-[3/4]"
+                          >
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300" />
+                            <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-xs tracking-[0.2em] font-medium">
+                              {item.name.toUpperCase()}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+          {navLinks.slice(1, 2).map((link) => (
             <Link
               key={link.name}
               to={link.href}
