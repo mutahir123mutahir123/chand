@@ -11,41 +11,41 @@ import { Link } from 'react-router-dom';
 const SLIDES = [
   {
     id: 0,
-    tag:         'The Art of Elegance',
-    heading:     'Timeless',
-    subheading:  'Brilliance',
+    tag: 'The Art of Elegance',
+    heading: 'Timeless',
+    subheading: 'Brilliance',
     description: 'Discover our curated collection of fine jewelry, handcrafted with passion and precision to celebrate your most precious moments.',
-    image:       'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=2000&auto=format&fit=crop',
-    bg:          '#1C1C2E',          // Midnight Indigo
-    glowA:       'rgba(155,107,107,0.22)',
-    glowB:       'rgba(180,160,220,0.14)',
-    subColor:    '#C4B5E8',          // Soft Lavender
+    image: 'images/chand-products/2.webp',
+    bg: '#1C1C2E',          // Midnight Indigo
+    glowA: 'rgba(155,107,107,0.22)',
+    glowB: 'rgba(180,160,220,0.14)',
+    subColor: '#C4B5E8',          // Soft Lavender
     overlayGrad: 'rgba(28,28,46,0.50)',
   },
   {
     id: 1,
-    tag:         'Crafted for Eternity',
-    heading:     'Radiant',
-    subheading:  'Elegance',
+    tag: 'Crafted for Eternity',
+    heading: 'Radiant',
+    subheading: 'Elegance',
     description: 'Each necklace and bracelet tells a story of devotion — sculpted by master artisans from the finest gold, silver, and precious gemstones.',
-    image:       '/images/2nd-img.jpg',
-    bg:          '#1C1C2E',          // Midnight Indigo
-    glowA:       'rgba(155,107,107,0.22)',
-    glowB:       'rgba(180,160,220,0.14)',
-    subColor:    '#C4B5E8',          // Soft Lavender
+    image: '/images/chand-products/3.webp',
+    bg: '#1C1C2E',          // Midnight Indigo
+    glowA: 'rgba(155,107,107,0.22)',
+    glowB: 'rgba(180,160,220,0.14)',
+    subColor: '#C4B5E8',          // Soft Lavender
     overlayGrad: 'rgba(28,28,46,0.50)',
   },
   {
     id: 2,
-    tag:         'Where Nature Meets Luxury',
-    heading:     'Forever',
-    subheading:  'Yours',
+    tag: 'Where Nature Meets Luxury',
+    heading: 'Forever',
+    subheading: 'Yours',
     description: 'From nature\'s depths to the heart of your story — our rings and earrings are crafted to last lifetimes and outlive every trend.',
-    image:       '/images/3rd-img.webp',
-    bg:          '#1C1C2E',          // Midnight Indigo
-    glowA:       'rgba(155,107,107,0.22)',
-    glowB:       'rgba(180,160,220,0.14)',
-    subColor:    '#C4B5E8',          // Soft Lavender
+    image: '/images/chand-products/13.webp',
+    bg: '#1C1C2E',          // Midnight Indigo
+    glowA: 'rgba(155,107,107,0.22)',
+    glowB: 'rgba(180,160,220,0.14)',
+    subColor: '#C4B5E8',          // Soft Lavender
     overlayGrad: 'rgba(28,28,46,0.50)',
   },
 ];
@@ -56,21 +56,21 @@ const AUTO_INTERVAL = 5500; // ms
    ANIMATION VARIANTS
  ═══════════════════════════════════════════════════════════════════ */
 const EASE_OUT = [0.16, 1, 0.3, 1];
-const EASE_IN  = [0.4,  0, 0.6, 1];
+const EASE_IN = [0.4, 0, 0.6, 1];
 
 // Text block — slides sideways + fades
 const textVariants = {
   enter: (dir) => ({
-    x:       dir > 0 ? 90 : -90,
+    x: dir > 0 ? 90 : -90,
     opacity: 0,
   }),
   center: {
-    x:       0,
+    x: 0,
     opacity: 1,
     transition: { duration: 0.65, ease: EASE_OUT },
   },
   exit: (dir) => ({
-    x:       dir > 0 ? -90 : 90,
+    x: dir > 0 ? -90 : 90,
     opacity: 0,
     transition: { duration: 0.38, ease: EASE_IN },
   }),
@@ -80,19 +80,19 @@ const textVariants = {
 const imageVariants = {
   enter: (dir) => ({
     clipPath: dir > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)',
-    scale:    1.06,
-    opacity:  0.7,
+    scale: 1.06,
+    opacity: 0.7,
   }),
   center: {
     clipPath: 'inset(0 0 0 0%)',
-    scale:    1,
-    opacity:  1,
+    scale: 1,
+    opacity: 1,
     transition: { duration: 0.85, ease: EASE_OUT },
   },
   exit: (dir) => ({
     clipPath: dir > 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)',
-    scale:    0.97,
-    opacity:  0.6,
+    scale: 0.97,
+    opacity: 0.6,
     transition: { duration: 0.55, ease: EASE_IN },
   }),
 };
@@ -263,8 +263,8 @@ const Hero = () => {
 
       {/* ── ARROW BUTTONS ────────────────────────────────────────── */}
       {[
-        { dir: -1, icon: ChevronLeft,  side: 'left-8'  },
-        { dir:  1, icon: ChevronRight, side: 'right-8' },
+        { dir: -1, icon: ChevronLeft, side: 'left-8' },
+        { dir: 1, icon: ChevronRight, side: 'right-8' },
       ].map(({ dir, icon: Icon, side }) => (
         <motion.button
           key={dir}
@@ -291,7 +291,7 @@ const Hero = () => {
             aria-label={`Go to slide ${i + 1}`}
             className="relative h-[3px] rounded-full overflow-hidden cursor-pointer transition-all duration-500"
             style={{
-              width:           i === current ? '48px' : '22px',
+              width: i === current ? '48px' : '22px',
               backgroundColor: 'rgba(255,255,255,0.25)',
             }}
           >
