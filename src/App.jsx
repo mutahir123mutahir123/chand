@@ -13,6 +13,15 @@ import Rings from './pages/Rings';
 import Necklaces from './pages/Necklaces';
 import Earrings from './pages/Earrings';
 import Bracelets from './pages/Bracelets';
+import NewArrivals from './pages/NewArrivals';
+import BestSelling from './pages/BestSelling';
+import Jhumka from './pages/Jhumka';
+import Studs from './pages/Studs';
+import Kara from './pages/Kara';
+import Kangan from './pages/Kangan';
+import JellyBangles from './pages/JellyBangles';
+import Pazeb from './pages/Pazeb';
+import BridalSets from './pages/BridalSets';
 import { CartWishlistProvider } from './context/CartWishlistContext';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -36,6 +45,15 @@ function App() {
               <Route path="/bracelets" element={<Bracelets />} />
               <Route path="/necklaces" element={<Necklaces />} />
               <Route path="/earrings" element={<Earrings />} />
+              <Route path="/new-arrivals" element={<NewArrivals />} />
+              <Route path="/best-sellings" element={<BestSelling />} />
+              <Route path="/jhumka" element={<Jhumka />} />
+              <Route path="/studs" element={<Studs />} />
+              <Route path="/kara" element={<Kara />} />
+              <Route path="/kangan" element={<Kangan />} />
+              <Route path="/jelly-bangles" element={<JellyBangles />} />
+              <Route path="/pazeb" element={<Pazeb />} />
+              <Route path="/bridal-sets" element={<BridalSets />} />
             </Routes>
           </main>
           <Footer />

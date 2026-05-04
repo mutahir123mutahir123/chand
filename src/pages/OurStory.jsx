@@ -33,7 +33,7 @@ const OurStory = () => {
             <FadeIn direction="left" delay={0.15}>
               <ScaleReveal delay={0.2}>
                 <img
-                  src="/philosphy.jpeg"
+                  src="/images/chand-products/8.webp"
                   alt="Our Craftsmanship"
                   className="w-full h-auto object-cover shadow-lg"
                   onError={(e) => {

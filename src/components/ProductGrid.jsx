@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
             src={product.image}
             alt={product.name}
             variants={{
-              rest:  { scale: 1 },
+              rest: { scale: 1 },
               hover: { scale: 1.08, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
             }}
             className="w-full h-full object-cover"
@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
         {/* Quick-action overlay */}
         <motion.div
           variants={{
-            rest:  { opacity: 0 },
+            rest: { opacity: 0 },
             hover: { opacity: 1, transition: { duration: 0.3 } },
           }}
           className="absolute inset-0 flex items-center justify-center space-x-4"
@@ -63,12 +63,11 @@ const ProductCard = ({ product }) => {
           <motion.button
             whileTap={{ scale: 0.9 }}
             variants={{
-              rest:  { y: 10, opacity: 0 },
-              hover: { y: 0,  opacity: 1, transition: { delay: 0.05, duration: 0.35 } },
+              rest: { y: 10, opacity: 0 },
+              hover: { y: 0, opacity: 1, transition: { delay: 0.05, duration: 0.35 } },
             }}
-            className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-colors ${
-              inWishlist ? 'bg-accent text-white' : 'bg-white text-accent hover:bg-accent hover:text-white'
-            }`}
+            className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-colors ${inWishlist ? 'bg-accent text-white' : 'bg-white text-accent hover:bg-accent hover:text-white'
+              }`}
             onClick={handleWishlistClick}
           >
             <Heart size={18} strokeWidth={1.5} fill={inWishlist ? 'currentColor' : 'none'} />
@@ -77,8 +76,8 @@ const ProductCard = ({ product }) => {
           <motion.button
             whileTap={{ scale: 0.9 }}
             variants={{
-              rest:  { y: 10, opacity: 0 },
-              hover: { y: 0,  opacity: 1, transition: { delay: 0.1, duration: 0.35 } },
+              rest: { y: 10, opacity: 0 },
+              hover: { y: 0, opacity: 1, transition: { delay: 0.1, duration: 0.35 } },
             }}
             className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors shadow-lg cursor-pointer"
             onClick={handleAddToCart}
@@ -90,7 +89,7 @@ const ProductCard = ({ product }) => {
         {/* Accent bottom line on hover */}
         <motion.div
           variants={{
-            rest:  { scaleX: 0 },
+            rest: { scaleX: 0 },
             hover: { scaleX: 1, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
           }}
           style={{ transformOrigin: 'left' }}
@@ -126,7 +125,7 @@ const ProductGrid = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 space-y-4 md:space-y-0">
           <div>
             <FadeUp delay={0.05}>
-              <span className="text-[10px] tracking-[0.4em] font-sans text-muted uppercase mb-4 block">
+              <span className="text-[15px] tracking-[0.4em] font-sans text-muted uppercase mb-4 block">
                 Curated Selection
               </span>
             </FadeUp>

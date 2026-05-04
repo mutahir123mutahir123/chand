@@ -32,15 +32,15 @@ const Header = () => {
   ];
 
   const collections = [
-    { name: 'Jhumka', image: '/images/chand-products/1.webp' },
-    { name: 'Studs', image: '/images/chand-products/2.webp' },
-    { name: 'Kara', image: '/images/chand-products/3.webp' },
-    { name: 'Kangan', image: '/images/chand-products/4.webp' },
-    { name: 'Jelly Bangles', image: '/images/chand-products/11.webp' },
-    { name: 'Bracelets', image: '/images/chand-products/12.webp' },
-    { name: 'Pazeb', image: '/images/chand-products/7.webp' },
-    { name: 'Rings', image: '/images/chand-products/8.webp' },
-    { name: 'Bridal Sets', image: '/images/chand-products/14.webp' },
+    { name: 'Jhumka', image: '/images/chand-products/1.webp', link: '/jhumka' },
+    { name: 'Studs', image: '/images/chand-products/2.webp', link: '/studs' },
+    { name: 'Kara', image: '/images/chand-products/3.webp', link: '/kara' },
+    { name: 'Kangan', image: '/images/chand-products/4.webp', link: '/kangan' },
+    { name: 'Jelly Bangles', image: '/images/chand-products/11.webp', link: '/jelly-bangles' },
+    { name: 'Bracelets', image: '/images/chand-products/12.webp', link: '/bracelets' },
+    { name: 'Pazeb', image: '/images/chand-products/7.webp', link: '/pazeb' },
+    { name: 'Rings', image: '/images/chand-products/8.webp', link: '/rings' },
+    { name: 'Bridal Sets', image: '/images/chand-products/14.webp', link: '/bridal-sets' },
   ];
 
   /* When not scrolled the header sits over the dark-teal hero → use white text.
@@ -96,7 +96,7 @@ const Header = () => {
                           {collections.map((item) => (
                             <Link
                               key={item.name}
-                              to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                              to={item.link}
                               className="block text-white/70 text-sm tracking-[0.15em] hover:text-white hover:translate-x-2 transition-all duration-300"
                             >
                               {item.name.toUpperCase()}
@@ -108,7 +108,7 @@ const Header = () => {
                         {collections.map((item) => (
                           <Link
                             key={item.name}
-                            to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                            to={item.link}
                             className="relative group overflow-hidden rounded-lg h-full min-h-48"
                           >
                             <img
@@ -248,7 +248,7 @@ const Header = () => {
                             {collections.map((item) => (
                               <Link
                                 key={item.name}
-                                to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                                to={item.link}
                                 className="block text-base tracking-[0.15em] text-white/70 hover:text-white transition-colors"
                               >
                                 {item.name.toUpperCase()}

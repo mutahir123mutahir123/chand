@@ -40,9 +40,9 @@ const Contact = () => {
 
                 <Stagger delay={0.1} stagger={0.15}>
                   {[
-                    { icon: <Mail size={18} />,   label: 'Email',    value: 'concierge@sudeniz.com' },
-                    { icon: <Phone size={18} />,  label: 'Phone',    value: '+1 (234) 567-890' },
-                    { icon: <MapPin size={18} />, label: 'Showroom', value: '123 Jewelry Avenue, Suite 456\nNew York, NY 10001' },
+                    { icon: <Mail size={18} />,   label: 'Email',    value: 'moonjewlers@gmail.com' },
+                    { icon: <Phone size={18} />,  label: 'Phone',    value: '+923194756008' },
+                    { icon: <MapPin size={18} />, label: 'Shop', value: 'shop no 23,new shad bagh Lahore,new Salamat Center ' },
                   ].map((item) => (
                     <StaggerItem key={item.label}>
                       <div className="flex items-start mb-8">
