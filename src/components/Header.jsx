@@ -148,7 +148,7 @@ const Header = () => {
               transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
               className={`text-xl md:text-2xl tracking-[0.35em] font-serif uppercase transition-colors duration-500 ${logoClass}`}
             >
-              Jewelery Cabin
+              Moon Jewelry
             </motion.h1>
           </Link>
         </div>

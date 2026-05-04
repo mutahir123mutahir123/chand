@@ -24,7 +24,7 @@ const Footer = () => {
             {/* ── Brand ──────────────────────────────────────────── */}
             <StaggerItem>
               <h2 className="text-2xl tracking-[0.3em] font-serif uppercase mb-6 text-white">
-                SU DENIZ
+                Moon Jewelry
               </h2>
               <p className="text-white/70 text-base leading-relaxed max-w-xs">
                 Crafting stories of elegance and timeless beauty through fine jewelry since 2010.
@@ -85,7 +85,7 @@ const Footer = () => {
         <FadeUp delay={0.4}>
           <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <p className="text-[10px] tracking-widest text-white/40">
-              © 2026 SU DENIZ. ALL RIGHTS RESERVED.
+              © 2026 Moon Jewelry. ALL RIGHTS RESERVED.
             </p>
             <div className="flex space-x-6 text-white/40">
               <a href="#" aria-label="Instagram" className="hover:text-tea-rose transition-colors">

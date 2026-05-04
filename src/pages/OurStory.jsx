@@ -47,7 +47,7 @@ const OurStory = () => {
             <Stagger delay={0.3} stagger={0.18}>
               <StaggerItem>
                 <p className="text-muted text-base md:text-lg leading-relaxed">
-                  SU DENIZ was founded with a singular vision: to create jewelry that tells a
+                  Moon Jewelry was founded with a singular vision: to create jewelry that tells a
                   story. Each piece in our collection is a testament to the artistry and
                   dedication of our master craftsmen, who have spent decades honing their skills
                   in the ancient traditions of jewelry making.

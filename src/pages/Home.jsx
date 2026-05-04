@@ -39,7 +39,7 @@ const Home = () => {
               <div className="relative aspect-[4/5] md:aspect-square">
                 <ScaleReveal delay={0.2}>
                   <img
-                    src="/philosphy.jpeg"
+                    src="/images/chand-products/7.webp"
                     alt="Craftsmanship"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -80,7 +80,7 @@ const Home = () => {
 
               <FadeUp delay={0.6}>
                 <p className="text-muted text-base md:text-lg leading-relaxed mb-10 max-w-md">
-                  At SU DENIZ, we believe that jewelry is more than just an accessory—it's an
+                  At Moon Jewelry, we believe that jewelry is more than just an accessory—it's an
                   expression of your journey. Each piece is meticulously designed in our studio
                   and brought to life by master artisans using the finest materials.
                 </p>
