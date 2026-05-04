@@ -1,0 +1,424 @@
+================================================================================
+                         MOON JEWELRY - PROJECT WORKFLOW
+================================================================================
+
+================================================================================
+                           PROJECT OVERVIEW
+================================================================================
+
+Project Name: Moon Jewelry (formerly Jewelery Cabin / SU DENIZ)
+Tech Stack: React + Vite + Tailwind CSS + Framer Motion
+Routing: React Router DOM v6
+State Management: Context API (Cart & Wishlist)
+Deployment: GitHub Pages
+
+================================================================================
+                            FILE STRUCTURE
+================================================================================
+
+PROJECT ROOT/
+├── public/
+│   └── images/
+│       ├── chand-products/          (14 product images: 1-14.webp + jelly.webp)
+│       └── ...
+├── src/
+│   ├── App.jsx                     (Main app with routes)
+│   ├── main.jsx                    (Entry point)
+│   ├── index.css                   (Global styles + Tailwind)
+│   │
+│   ├── components/
+│   │   ├── Header.jsx              (Navigation with mega menu)
+│   │   ├── Footer.jsx              (Site footer)
+│   │   ├── Hero.jsx                (Homepage hero slider)
+│   │   ├── Collections.jsx         (Category cards section)
+│   │   ├── ProductGrid.jsx         (Product grid display)
+│   │   ├── ProductCard.jsx         (Individual product card)
+│   │   ├── CategoryProductCard.jsx (Category page product card)
+│   │   ├── TextReveal.jsx          (Animation components)
+│   │   ├── ScrollToTop.jsx         (Scroll restoration)
+│   │   └── Newsletter.jsx          (Email signup section)
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx                (Homepage)
+│   │   ├── Shop.jsx                (All products with pagination)
+│   │   ├── ProductDetail.jsx       (Single product page)
+│   │   ├── Contact.jsx             (Contact form)
+│   │   ├── OurStory.jsx            (About page)
+│   │   ├── Cart.jsx                (Shopping cart)
+│   │   ├── Wishlist.jsx            (Saved products)
+│   │   │
+│   │   ├── CATEGORY PAGES (Pre-defined):
+│   │   ├── Rings.jsx               (Rings collection)
+│   │   ├── Necklaces.jsx           (Necklaces collection)
+│   │   ├── Earrings.jsx            (Earrings collection)
+│   │   ├── Bracelets.jsx           (Bracelets collection)
+│   │   │
+│   │   ├── DYNAMIC CATEGORY PAGES (New):
+│   │   ├── NewArrivals.jsx         (New arrivals page)
+│   │   ├── BestSelling.jsx         (Best selling products)
+│   │   ├── Jhumka.jsx              (Jhumka earrings)
+│   │   ├── Studs.jsx               (Stud earrings)
+│   │   ├── Kara.jsx                (Kara bangle)
+│   │   ├── Kangan.jsx              (Kangan bangle)
+│   │   ├── JellyBangles.jsx        (Jelly bangles with products)
+│   │   ├── Pazeb.jsx               (Pazeb - toe ring)
+│   │   └── BridalSets.jsx          (Bridal jewelry sets)
+│   │
+│   ├── context/
+│   │   └── CartWishlistContext.jsx  (Global state for cart & wishlist)
+│   │
+│   └── data/
+│       └── products.js              (Product data array)
+│
+└── package.json
+
+================================================================================
+                            ROUTE FLOW
+================================================================================
+
+App.jsx defines all routes:
+
+/                    → Home.jsx
+/shop                → Shop.jsx (All Products)
+/product/:id         → ProductDetail.jsx (:id = product ID)
+/contact             → Contact.jsx
+/cart                → Cart.jsx
+/wishlist            → Wishlist.jsx
+/our-story           → OurStory.jsx
+
+CATEGORY ROUTES:
+/rings               → Rings.jsx
+/necklaces           → Necklaces.jsx
+/earrings            → Earrings.jsx
+/bracelets           → Bracelets.jsx
+
+NEW CATEGORY ROUTES:
+/new-arrivals        → NewArrivals.jsx
+/best-sellings       → BestSelling.jsx
+/jhumka              → Jhumka.jsx
+/studs               → Studs.jsx
+/kara                → Kara.jsx
+/kangan              → Kangan.jsx
+/jelly-bangles       → JellyBangles.jsx
+/pazeb               → Pazeb.jsx
+/bridal-sets         → BridalSets.jsx
+
+================================================================================
+                         HOW COMPONENTS CONNECT
+================================================================================
+
+                           ┌─────────────────┐
+                           │   App.jsx       │
+                           │  (Main Router)  │
+                           └────────┬────────┘
+                                    │
+           ┌────────────────────────┼────────────────────────┐
+           │                        │                        │
+    ┌──────▼──────┐         ┌──────▼──────┐         ┌──────▼──────┐
+    │  Header.jsx │         │    Pages    │         │  Footer.jsx │
+    │(Navigation) │         │   (Route)   │         │             │
+    └──────┬──────┘         └─────────────┘         └─────────────┘
+           │
+    ┌──────▼──────┐
+    │Mega Menu   │
+    │Dropdown    │
+    │Collections │
+    └────────────┘
+
+PAGE → COMPONENT FLOW:
+─────────────────────
+
+1. Home.jsx
+   ├── Hero.jsx
+   ├── Collections.jsx
+   └── Newsletter.jsx (or component)
+
+2. Shop.jsx
+   └── Uses products from: data/products.js
+   └── Displays: ProductGrid style layout (custom)
+
+3. Category Pages (Rings.jsx, etc.)
+   └── Uses: CategoryProductCard.jsx
+   └── Filters: products.data by category
+
+4. ProductDetail.jsx
+   └── Uses: products.data.find() by ID
+
+================================================================================
+                         DATA FLOW
+================================================================================
+
+products.js (DATA LAYER)
+    │
+    │  exports: products array, USD_TO_PKR exchange rate
+    │
+    ▼
+    Used by:
+    ├── Shop.jsx           (all products)
+    ├── Rings.jsx          (filter: category === 'Rings')
+    ├── Bracelets.jsx      (filter: category === 'Bracelets')
+    ├── Necklaces.jsx      (filter: category === 'Necklaces')
+    ├── Earrings.jsx       (filter: category === 'Earrings')
+    ├── ProductDetail.jsx  (find by id)
+    └── Cart/Wishlist     (store product objects)
+
+CartWishlistContext.jsx (STATE LAYER)
+    │
+    │  provides: cartItems, wishlistItems, addToCart, addToWishlist, etc.
+    │
+    ▼
+    Used by:
+    ├── Header.jsx         (cart count display)
+    ├── Cart.jsx           (shopping cart)
+    ├── Wishlist.jsx       (saved items)
+    └── ProductDetail.jsx  (add to cart/wishlist buttons)
+
+================================================================================
+                         HEADER & MEGA MENU STRUCTURE
+================================================================================
+
+HEADER STRUCTURE:
+────────────────
+Desktop (lg:):
+┌─────────────────────────────────────────────────────────────────────┐
+│ [RINGS] [NECKLACES]    [LOGO]    [EARRINGS] [BRACELETS] [CONTACT] │
+│                                                    [USER] [HEART] │
+└─────────────────────────────────────────────────────────────────────┘
+
+Mobile (default):
+┌─────────────────────────────────────────────────────────────────────┐
+│ [MENU]                              [LOGO]              [ICONS]   │
+└─────────────────────────────────────────────────────────────────────┘
+
+MEGA MENU (Shop Dropdown):
+──────────────────────────
+Triggered by: Hover on SHOP link (desktop)
+              Click on SHOP (mobile)
+
+Desktop Full-Screen:
+┌────────────────────┬──────────────────────────────────────────────┐
+│   25% WIDTH       │           75% WIDTH                           │
+│                   │                                               │
+│  COLLECTIONS      │    ┌─────┐  ┌─────┐  ┌─────┐                │
+│                   │    │     │  │     │  │     │                │
+│  • Jhumka         │    │ IMG │  │ IMG │  │ IMG │                │
+│  • Studs          │    │     │  │     │  │     │                │
+│  • Kara           │    └─────┘  └─────┘  └─────┘                │
+│  • Kangan         │    Jhumka  Studs   Kara                    │
+│  • Jelly Bangles  │                                               │
+│  • Bracelets      │    ┌─────┐  ┌─────┐  ┌─────┐                │
+│  • Pazeb          │    │     │  │     │  │     │                │
+│  • Rings          │    │ IMG │  │ IMG │  │ IMG │                │
+│  • Bridal Sets    │    │     │  │     │  │     │                │
+│                   │    └─────┘  └─────┘  └─────┘                │
+└────────────────────┴──────────────────────────────────────────────┘
+
+COLLECTIONS ARRAY (in Header.jsx):
+──────────────────────────────────
+[
+  { name: 'Jhumka',       image: '/images/chand-products/1.webp', link: '/jhumka' },
+  { name: 'Studs',        image: '/images/chand-products/2.webp', link: '/studs' },
+  { name: 'Kara',         image: '/images/chand-products/3.webp', link: '/kara' },
+  { name: 'Kangan',       image: '/images/chand-products/4.webp', link: '/kangan' },
+  { name: 'Jelly Bangles', image: '/images/chand-products/11.webp', link: '/jelly-bangles' },
+  { name: 'Bracelets',   image: '/images/chand-products/12.webp', link: '/bracelets' },
+  { name: 'Pazeb',       image: '/images/chand-products/7.webp', link: '/pazeb' },
+  { name: 'Rings',       image: '/images/chand-products/8.webp', link: '/rings' },
+  { name: 'Bridal Sets', image: '/images/chand-products/14.webp', link: '/bridal-sets' },
+]
+
+================================================================================
+                         NAVIGATION LINKS
+================================================================================
+
+Desktop Header Links:
+────────────────────
+Left Side:
+  • SHOP (with mega menu dropdown)
+
+Middle:
+  • NEW ARRIVALS (/new-arrivals)
+
+Right Side:
+  • BEST SELLINGS (/best-sellings)
+  • CLIENT REVIEWS (/reviews - not created yet)
+  • CONTACT (/contact)
+
+Mobile Menu Links:
+──────────────────
+  • HOME (/)
+  • SHOP (+ expandable submenu with 9 collections)
+  • NEW ARRIVALS (/new-arrivals)
+  • BEST SELLINGS (/best-sellings)
+  • CLIENT REVIEWS (/reviews)
+  • CONTACT (/contact)
+
+Footer Links:
+────────────
+  • Shop (/shop)
+  • New Arrivals (/new-arrivals)
+  • Best Selling (/best-sellings)
+  • Rings (/rings)
+  • Necklaces (/necklaces)
+  • Earrings (/earrings)
+  • Bracelets (/bracelets)
+  • Contact (/contact)
+  • Our Story (/our-story)
+
+================================================================================
+                         PRODUCT IMAGES
+================================================================================
+
+Image Sources:
+─────────────
+1. Hero Section: Hero.jsx uses:
+   - /images/chand-products/2.webp
+   - /images/chand-products/3.webp
+   - /images/chand-products/13.webp
+
+2. Header Mega Menu:
+   - All 14 images from chand-products folder
+
+3. Collections Section (Home.jsx):
+   - Rings: /images/chand-products/12.webp
+   - Earrings: /images/chand-products/1.webp
+   - Pendants: /images/chand-products/11.webp
+   - Bangles: /images/chand-products/5.webp
+   - Pazebs: /images/chand-products/7.webp
+   - Jelly Bangles: /images/chand-products/9.webp
+
+4. Products Data:
+   - products.js uses /images/chand-products/1-14.webp
+
+5. Category Pages:
+   - Each has hero image from chand-products
+   - JellyBangles shows products with jelly.webp
+
+================================================================================
+                         PAGINATION
+================================================================================
+
+Shop.jsx Pagination:
+────────────────────
+• 9 products per page (3x3 grid)
+• Total 16 products = 2 pages
+• Buttons: 1, 2
+• Uses useState for currentPage
+• key={currentPage} forces re-render on page change
+
+================================================================================
+                         ANIMATIONS (Framer Motion)
+================================================================================
+
+TextReveal.jsx Components:
+──────────────────────────
+• WordReveal     - Reveals text word by word
+• FadeUp         - Fade in and move up animation
+• FadeIn         - Fade in from direction
+• ScaleReveal    - Scale up animation
+• Stagger        - Stagger children animation
+• StaggerItem    - Individual stagger item
+
+Used throughout:
+• Header         - Logo, nav links on load
+• Hero           - Slide animations
+• Collections    - Card animations
+• Shop           - Product card animations
+• All Pages      - Header animations
+
+================================================================================
+                         STATE MANAGEMENT
+================================================================================
+
+CartWishlistContext.jsx:
+────────────────────────
+Functions:
+• addToCart(product)
+• removeFromCart(productId)
+• updateQuantity(productId, quantity)
+• addToWishlist(product)
+• removeFromWishlist(productId)
+• isInWishlist(productId) - check if added
+
+Storage: LocalStorage (via useEffect)
+
+Used By:
+• Header.jsx      - cart count badge
+• ProductDetail   - Add to Cart/Wishlist buttons
+• Cart.jsx        - Display cart items
+• Wishlist.jsx    - Display wishlist items
+
+================================================================================
+                         STYLING (Tailwind CSS)
+================================================================================
+
+Custom Colors (tailwind.config.js):
+──────────────────────────────────
+• primary:       #F5F3F0 (light cream)
+• accent:        #0D5C5C (teal/dark cyan)
+• secondary:     #C4B5E8 (soft lavender)
+• muted:         #6B6B6B (gray)
+• ivory:         #FFFEF9 (off-white)
+• tea-rose:      #D4A5A5 (dusty pink)
+
+Custom Fonts:
+─────────────
+• serif:         Playfair Display (headings)
+• sans:          Inter (body text)
+
+================================================================================
+                         BUILD & DEPLOY
+================================================================================
+
+Development:
+───────────
+npm run dev        - Start dev server
+npm run build      - Create production build
+
+Deployment:
+──────────
+git push origin master - Pushes to GitHub
+
+================================================================================
+                         DEPENDENCIES
+================================================================================
+
+package.json includes:
+• react           - UI framework
+• react-dom       - React DOM
+• react-router-dom - Routing
+• framer-motion   - Animations
+• lucide-react    - Icons
+• tailwindcss     - Styling
+• vite            - Build tool
+
+================================================================================
+                            WORKFLOW SUMMARY
+================================================================================
+
+USER VISITS SITE
+       │
+       ▼
+   App.jsx (Routes)
+       │
+       ├── / → Home.jsx
+       │     ├── Hero.jsx (slider with 3 images)
+       │     ├── Philosophy section (about)
+       │     └── Collections.jsx (6 category cards)
+       │
+       ├── /shop → Shop.jsx (all 16 products, pagination)
+       │
+       ├── /product/:id → ProductDetail.jsx (single product)
+       │
+       ├── /jhumka, /studs, etc → Category pages (hero + products)
+       │
+       ├── Mega Menu (Header.jsx)
+       │     └── 9 collection links with images
+       │
+       └── Cart/Wishlist (Context API state)
+             │
+             └── LocalStorage (persists data)
+
+================================================================================
+                              END OF DOCUMENT
+================================================================================
