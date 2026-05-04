@@ -97,6 +97,7 @@ const Header = () => {
                             <Link
                               key={item.name}
                               to={item.link}
+                              onClick={() => setIsShopOpen(false)}
                               className="block text-white/70 text-sm tracking-[0.15em] hover:text-white hover:translate-x-2 transition-all duration-300"
                             >
                               {item.name.toUpperCase()}
@@ -109,6 +110,7 @@ const Header = () => {
                           <Link
                             key={item.name}
                             to={item.link}
+                            onClick={() => setIsShopOpen(false)}
                             className="relative group overflow-hidden rounded-lg h-full min-h-48"
                           >
                             <img
