@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { products, USD_TO_PKR } from '../data/products';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WordReveal, FadeUp, Stagger, StaggerItem } from '../components/TextReveal';
 
+const PRODUCTS_PER_PAGE = 9;
+
 const Shop = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const currentProducts = products.slice(startIndex, startIndex + PRODUCTS_PER_PAGE);
+
   return (
     <div className="pt-32 pb-20 bg-primary">
       <div className="container">
@@ -27,8 +35,8 @@ const Shop = () => {
 
         {/* ── Products grid ────────────────────────────────────── */}
         <Stagger delay={0.25} stagger={0.09}>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {products.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentProducts.map((product) => (
               <StaggerItem key={product.id}>
                 <motion.div
                   className="group"
@@ -100,6 +108,25 @@ const Shop = () => {
             ))}
           </div>
         </Stagger>
+
+        {/* ── Pagination ─────────────────────────────────────── */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center space-x-2 mt-16">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 rounded-full text-sm font-sans transition-all duration-300 ${
+                  currentPage === page
+                    ? 'bg-accent text-white'
+                    : 'bg-white text-muted hover:bg-accent hover:text-white'
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
