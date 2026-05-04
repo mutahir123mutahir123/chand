@@ -8,6 +8,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [isMobileShopOpen, setIsMobileShopOpen] = useState(false);
   const location = useLocation();
   const { cartItems } = useCartWishlist();
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -216,7 +217,7 @@ const Header = () => {
             </div>
 
             {/* Links */}
-            <nav className="flex flex-col space-y-8 mt-12">
+            <nav className="flex flex-col space-y-6 mt-12">
               {[{ name: 'HOME', href: '/' }, ...navLinks].map((link, i) => (
                 <motion.div
                   key={link.name}
@@ -224,12 +225,47 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.07, duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
                 >
-                  <Link
-                    to={link.href}
-                    className="text-2xl tracking-[0.12em] font-serif text-white hover:text-tea-rose transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.isDropdown ? (
+                    <div>
+                      <button
+                        onClick={() => setIsMobileShopOpen(!isMobileShopOpen)}
+                        className="text-2xl tracking-[0.12em] font-serif text-white hover:text-tea-rose transition-colors flex items-center"
+                      >
+                        {link.name}
+                        <span className={`ml-2 text-sm transition-transform ${isMobileShopOpen ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
+                      </button>
+                      <AnimatePresence>
+                        {isMobileShopOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4 ml-4 space-y-3 overflow-hidden"
+                          >
+                            {collections.map((item) => (
+                              <Link
+                                key={item.name}
+                                to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
+                                className="block text-base tracking-[0.15em] text-white/70 hover:text-white transition-colors"
+                              >
+                                {item.name.toUpperCase()}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-2xl tracking-[0.12em] font-serif text-white hover:text-tea-rose transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>
