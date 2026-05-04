@@ -86,13 +86,13 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="fixed left-0 top-16 w-screen h-[calc(100vh-4rem)] lg:h-auto lg:max-h-[80vh]"
+                    className="fixed left-0 top-16 w-screen h-[calc(100vh-4rem)]"
                     onMouseLeave={() => setIsShopOpen(false)}
                   >
-                    <div className="flex flex-col lg:flex-row bg-[#1C1C2E] shadow-2xl overflow-y-auto h-full w-full">
-                      <div className="w-full lg:w-1/4 p-6 lg:p-8 flex flex-col justify-center space-y-4 lg:space-y-6 min-h-[40vh] lg:min-h-0 border-b lg:border-b-0 lg:border-r border-white/10">
-                        <h3 className="text-white text-lg lg:text-xl tracking-[0.2em] font-serif">COLLECTIONS</h3>
-                        <div className="space-y-2 lg:space-y-3">
+                    <div className="flex bg-[#1C1C2E] shadow-2xl overflow-y-auto h-full w-full">
+                      <div className="w-1/4 p-8 flex flex-col justify-center space-y-6 min-h-full border-r border-white/10">
+                        <h3 className="text-white text-xl tracking-[0.2em] font-serif">COLLECTIONS</h3>
+                        <div className="space-y-3">
                           {collections.map((item) => (
                             <Link
                               key={item.name}
@@ -104,12 +104,12 @@ const Header = () => {
                           ))}
                         </div>
                       </div>
-                      <div className="w-full lg:w-3/4 grid grid-cols-3 auto-rows-fr gap-2 lg:gap-3 p-4 lg:p-6">
+                      <div className="w-3/4 grid grid-cols-3 auto-rows-fr gap-3 p-6 h-full">
                         {collections.map((item) => (
                           <Link
                             key={item.name}
                             to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
-                            className="relative group overflow-hidden rounded-lg aspect-square lg:aspect-[3/4] lg:min-h-48"
+                            className="relative group overflow-hidden rounded-lg h-full min-h-48"
                           >
                             <img
                               src={item.image}
@@ -117,7 +117,7 @@ const Header = () => {
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300" />
-                            <span className="absolute bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2 text-white text-xs tracking-[0.2em] font-medium">
+                            <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-xs tracking-[0.2em] font-medium">
                               {item.name.toUpperCase()}
                             </span>
                           </Link>
