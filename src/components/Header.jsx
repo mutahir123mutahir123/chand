@@ -104,12 +104,12 @@ const Header = () => {
                           ))}
                         </div>
                       </div>
-                      <div className="w-3/4 grid grid-cols-3 gap-3 p-6">
+                      <div className="w-3/4 grid grid-cols-3 auto-rows-fr gap-3 p-6 h-full">
                         {collections.map((item) => (
                           <Link
                             key={item.name}
                             to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
-                            className="relative group overflow-hidden rounded-lg aspect-square"
+                            className="relative group overflow-hidden rounded-lg h-full min-h-48"
                           >
                             <img
                               src={item.image}
