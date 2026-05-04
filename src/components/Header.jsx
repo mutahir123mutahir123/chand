@@ -86,11 +86,11 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 top-full mt-0 w-screen max-w-none left-0 right-0"
+                    className="fixed left-0 top-16 w-screen h-[calc(100vh-4rem)]"
                     onMouseLeave={() => setIsShopOpen(false)}
                   >
-                    <div className="flex bg-[#1C1C2E] shadow-2xl overflow-y-auto max-h-[80vh]">
-                      <div className="w-1/3 p-8 flex flex-col justify-center space-y-6 min-h-[80vh]">
+                    <div className="flex bg-[#1C1C2E] shadow-2xl overflow-y-auto h-full w-full">
+                      <div className="w-1/4 p-8 flex flex-col justify-center space-y-6 min-h-full border-r border-white/10">
                         <h3 className="text-white text-xl tracking-[0.2em] font-serif">COLLECTIONS</h3>
                         <div className="space-y-3">
                           {collections.map((item) => (
@@ -104,12 +104,12 @@ const Header = () => {
                           ))}
                         </div>
                       </div>
-                      <div className="w-2/3 grid grid-cols-3 gap-2 p-4">
-                        {collections.map((item, index) => (
+                      <div className="w-3/4 grid grid-cols-3 gap-3 p-6">
+                        {collections.map((item) => (
                           <Link
                             key={item.name}
                             to={`/collections/${item.name.toLowerCase().replace(' ', '-')}`}
-                            className="relative group overflow-hidden rounded-lg aspect-[3/4]"
+                            className="relative group overflow-hidden rounded-lg aspect-square"
                           >
                             <img
                               src={item.image}
