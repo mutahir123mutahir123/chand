@@ -86,12 +86,11 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 top-full mt-2 w-[90vw] max-w-5xl mx-auto"
-                    style={{ left: '50%', transform: 'translateX(-50%)' }}
+                    className="absolute left-0 top-full mt-0 w-screen max-w-none left-0 right-0"
                     onMouseLeave={() => setIsShopOpen(false)}
                   >
-                    <div className="flex bg-[#1C1C2E] rounded-lg overflow-hidden shadow-2xl">
-                      <div className="w-1/3 p-8 flex flex-col justify-center space-y-6">
+                    <div className="flex bg-[#1C1C2E] shadow-2xl overflow-y-auto max-h-[80vh]">
+                      <div className="w-1/3 p-8 flex flex-col justify-center space-y-6 min-h-[80vh]">
                         <h3 className="text-white text-xl tracking-[0.2em] font-serif">COLLECTIONS</h3>
                         <div className="space-y-3">
                           {collections.map((item) => (
