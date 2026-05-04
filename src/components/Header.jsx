@@ -32,14 +32,14 @@ const Header = () => {
   ];
 
   const collections = [
-    { name: 'Jhumka', image: '/images/chand-products/5.webp' },
-    { name: 'Studs', image: '/images/chand-products/6.webp' },
-    { name: 'Kara', image: '/images/chand-products/7.webp' },
-    { name: 'Kangan', image: '/images/chand-products/8.webp' },
-    { name: 'Jelly Bangles', image: '/images/chand-products/9.webp' },
-    { name: 'Bracelets', image: '/images/chand-products/10.webp' },
-    { name: 'Pazeb', image: '/images/chand-products/11.webp' },
-    { name: 'Rings', image: '/images/chand-products/12.webp' },
+    { name: 'Jhumka', image: '/images/chand-products/1.webp' },
+    { name: 'Studs', image: '/images/chand-products/2.webp' },
+    { name: 'Kara', image: '/images/chand-products/3.webp' },
+    { name: 'Kangan', image: '/images/chand-products/4.webp' },
+    { name: 'Jelly Bangles', image: '/images/chand-products/11.webp' },
+    { name: 'Bracelets', image: '/images/chand-products/12.webp' },
+    { name: 'Pazeb', image: '/images/chand-products/7.webp' },
+    { name: 'Rings', image: '/images/chand-products/8.webp' },
     { name: 'Bridal Sets', image: '/images/chand-products/14.webp' },
   ];
 
