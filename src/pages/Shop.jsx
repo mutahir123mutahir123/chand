@@ -27,7 +27,7 @@ const Shop = () => {
 
         {/* ── Products grid ────────────────────────────────────── */}
         <Stagger delay={0.25} stagger={0.09}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {products.map((product) => (
               <StaggerItem key={product.id}>
                 <motion.div
@@ -38,7 +38,7 @@ const Shop = () => {
                 >
                   <Link to={`/product/${product.id}`}>
                     <div
-                      className="relative aspect-[3/4] overflow-hidden"
+                      className="relative aspect-square overflow-hidden"
                       style={{ backgroundColor: '#FEF0F0' }}
                     >
                       <motion.img
@@ -82,16 +82,16 @@ const Shop = () => {
                     </div>
                   </Link>
 
-                  <div className="mt-6 text-center">
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted mb-1 font-sans">
+                  <div className="mt-3 text-center">
+                    <p className="text-[8px] tracking-[0.2em] uppercase text-muted mb-1 font-sans">
                       {product.category}
                     </p>
                     <Link to={`/product/${product.id}`}>
-                      <h3 className="font-serif text-lg tracking-wide text-accent hover:text-muted transition-colors">
+                      <h3 className="font-serif text-sm tracking-wide text-accent hover:text-muted transition-colors">
                         {product.name}
                       </h3>
                     </Link>
-                    <p className="font-sans text-sm mt-2 tracking-widest text-muted">
+                    <p className="font-sans text-xs mt-1 tracking-widest text-muted">
                       Rs. {(product.price * USD_TO_PKR).toLocaleString()}
                     </p>
                   </div>
