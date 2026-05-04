@@ -310,23 +310,6 @@ const Hero = () => {
           </button>
         ))}
       </div>
-
-      {/* ── Scroll indicator ─────────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-8 hidden lg:flex flex-col items-center space-y-2 z-20"
-      >
-        <span className="text-[8px] tracking-[0.4em] uppercase text-white/35 font-sans">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-[1px] h-8 bg-gradient-to-b from-white/35 to-transparent"
-        />
-      </motion.div>
     </motion.section>
   );
 };
