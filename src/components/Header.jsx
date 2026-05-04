@@ -132,7 +132,7 @@ const Header = () => {
             <Link
               key={link.name}
               to={link.href}
-              className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass}`}
+              className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass} mb-1`}
             >
               {link.name}
             </Link>
@@ -160,7 +160,7 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass}`}
+                className={`text-[10px] tracking-[0.22em] font-sans transition-all duration-300 hover:opacity-60 ${textClass} mb-1`}
               >
                 {link.name}
               </Link>
