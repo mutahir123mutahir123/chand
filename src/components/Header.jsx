@@ -156,7 +156,7 @@ const Header = () => {
         {/* ── Right Nav (Desktop) + Icons ─────────────────────────── */}
         <div className="flex items-center space-x-6">
           <nav className="hidden lg:flex items-center space-x-8 mr-8">
-            {navLinks.slice(1, 4).map((link) => (
+            {navLinks.slice(2, 4).map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
