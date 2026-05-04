@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { WordReveal, FadeUp, Stagger, StaggerItem } from './TextReveal';
 
 const collections = [
-  { title: 'RINGS',     image: '/images/rings/ring4.jpeg',                  link: '/rings'     },
-  { title: 'NECKLACES', image: '/images/necklace/123.jpg',                  link: '/necklaces' },
-  { title: 'EARRINGS',  image: '/images/earings/Follow me for more!.jpeg',  link: '/earrings'  },
+  { title: 'RINGS',         image: '/images/chand-products/12.webp',  link: '/rings'         },
+  { title: 'EARRINGS',     image: '/images/chand-products/1.webp',   link: '/earrings'      },
+  { title: 'PENDANTS',     image: '/images/chand-products/11.webp',  link: '/necklaces'     },
+  { title: 'BANGLES',      image: '/images/chand-products/5.webp',   link: '/bracelets'     },
+  { title: 'PAZEBS',       image: '/images/chand-products/7.webp',   link: '/bracelets'     },
+  { title: 'JELLY BANGLES', image: '/images/chand-products/9.webp',  link: '/bracelets'     },
 ];
 
 const Collections = () => {
@@ -33,7 +36,7 @@ const Collections = () => {
 
         {/* ── Cards ────────────────────────────────────────────── */}
         <Stagger delay={0.2} stagger={0.18}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {collections.map((item) => (
               <StaggerItem key={item.title}>
                 <Link to={item.link}>
